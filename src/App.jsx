@@ -9,7 +9,6 @@ import './App.css'
 import {Outlet } from 'react-router-dom'
 import Tablee from './Components/Tablee'
 
-
 const router = createBrowserRouter([{
   path: '/',
   element: <Nav></Nav>,
@@ -27,7 +26,7 @@ const router = createBrowserRouter([{
   },
   {
     path: '/nav/work',
-    element: <Work></Work>,
+    element: <Work></Work>, 
   },
   {
     path: '/nav/table',
@@ -39,7 +38,6 @@ const App = () => {
   return (
     <>
         <RouterProvider router={router}> </RouterProvider>
-        <Outlet></Outlet>
     </>
   )
 }

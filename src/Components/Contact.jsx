@@ -8,7 +8,7 @@ const Contact = () => {
 
   let [state, setState] = useState(
     location.state || {
-      id: null,
+      _id: null,
       name: "",
       email: "",
       phone: "",
@@ -29,10 +29,10 @@ const Contact = () => {
 
     try {
       console.log(state);
-      let { id, name, email, phone, schedule, service } = state;
+      let { _id, name, email, phone, schedule, service } = state;
       let newdata = { name, email, phone, schedule, service };
-      if (id) {
-        await axios.put(`http://localhost:5000/formdata/${id}`, newdata)
+      if (_id) {
+        await axios.put(`http://localhost:5000/formdata/${_id}`, newdata)
       }
       else {
         await axios.post('http://localhost:5000/formdata', newdata)
@@ -85,7 +85,7 @@ const Contact = () => {
               <option value="Event Photography">Event Photography</option>
               <option value="ProductPhotography">Product Photography</option>
             </select>
-            <button id='sub' onClick={submit}>{state.id ? 'UPDATE' : 'SUBMIT'}</button>
+            <button id='sub' onClick={submit}>{state._id ? 'UPDATE' : 'SUBMIT'}</button>
             <button id='can'>CANCEL</button>
           </form>
         </div>

@@ -30,7 +30,8 @@ const Tablee = () => {
     const fetchData = async () => {
         try {
             const response = await axios.get('http://localhost:5000/formdata');
-            setData(response.data);
+            console.log(response.data);
+            setData(response.data);       
         } catch (error) {
             console.error(error);
         }
@@ -46,6 +47,7 @@ const Tablee = () => {
     };
 
     const handleEdit = (entry) => {
+        console.log(entry);
         navigate('/nav/contact', { state: entry });
     };
 
@@ -79,8 +81,8 @@ const Tablee = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
-                            <TableRow hover tabIndex={-1} key={row.id}>
+                        {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (    
+                            <TableRow hover tabIndex={-1} key={row._id}>
                                 {columns.map((column) => {
                                     if (column.id === 'edit') {
                                         return (
@@ -103,7 +105,7 @@ const Tablee = () => {
                                                     variant="contained"
                                                     color="secondary"
                                                     size="small"
-                                                    onClick={() => handleDelete(row.id)}
+                                                    onClick={() => handleDelete(row._id)}
                                                 >
                                                     Delete
                                                 </Button>
